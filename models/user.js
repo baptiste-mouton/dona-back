@@ -5,21 +5,21 @@ const campaignSchema = new mongoose.Schema({
         required: true,
         type: String
     },
-    domain: {
+    aimed_amount: {
         required: true,
-        type: String
+        type: Number
     },
     raised_amount: {
         required: true,
         type: Number
     },
-    recolted_amount: {
+    description: {
         required: true,
-        type: Number
+        type: String
     }
 });
 
-const associationSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     name: {
         required: true,
         type: String
@@ -32,7 +32,15 @@ const associationSchema = new mongoose.Schema({
         required: true,
         type: String
     },
+    isAssociation: {
+        required: true,
+        type: Boolean
+    },
+    domain: {
+        required: true,
+        type: String
+    },
     campaigns: [campaignSchema]
 });
 
-module.exports = mongoose.model('Association', associationSchema);
+module.exports = mongoose.model('User', userSchema);
