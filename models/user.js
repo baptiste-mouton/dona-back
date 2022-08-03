@@ -16,7 +16,10 @@ const campaignSchema = new mongoose.Schema({
     description: {
         required: true,
         type: String
-    }
+    },
+    association: {
+        type: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+    },
 });
 
 const userSchema = new mongoose.Schema({
@@ -37,7 +40,7 @@ const userSchema = new mongoose.Schema({
         type: Boolean
     },
     domain: {
-        required: true,
+        required: false,
         type: String
     },
     campaigns: [campaignSchema]
