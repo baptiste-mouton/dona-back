@@ -50,8 +50,7 @@ router.put('/associations/:id/', async (req, res) => {
                     campId = campaign._id
                 }
 
-                console.log(campId);
-                res.json({id:campId})
+                res.status(200).json({id:campId})
             }
             )
             
