@@ -40,7 +40,8 @@ router.post('/association', async (req,res) => {
         email_address: req.body.email_address,
         account_address: req.body.account_address,
         isAssociation: true,
-        domain: req.body.domain
+        domain: req.body.domain,
+        description: req.body.description
     });
 
     try {
