@@ -18,6 +18,40 @@ router.get('/users', async (req, res) => {
     }
 });
 
+router.post('/user', async (req,res) => {
+    const user = new userModel({
+        name: req.body.name,
+        email_address: req.body.email_address,
+        account_address: req.body.account_address,
+        isAssociation: false
+    });
+
+    try {
+        let savedUser = await user.save();
+        res.status(200).json(savedUser);
+    } catch(error) {
+        res.status(500).json({message: error.message});
+    }
+});
+
+router.post('/association', async (req,res) => {
+    const association = new userModel({
+        name: req.body.name,
+        email_address: req.body.email_address,
+        account_address: req.body.account_address,
+        isAssociation: true,
+        domain: req.body.domain
+    });
+
+    try {
+        let savedAssociation = await association.save();
+        res.status(200).json(savedAssociation);
+    } catch(error) {
+        res.status(500).json({message: error.message});
+    }
+
+});
+
 router.get('/associations', async (req, res) => {
     try {
         const data = await userModel.find({isAssociation: true});
