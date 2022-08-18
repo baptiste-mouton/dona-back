@@ -6,6 +6,9 @@ const userModel = require('../models/user');
 
 const ObjectId = require('mongoose').Types.ObjectId
 
+/**
+ * Retrieves all the donators
+ */
 router.get('/users', async (req, res) => {
     const address = req.query.account_address;
     try {
@@ -18,6 +21,7 @@ router.get('/users', async (req, res) => {
     }
 });
 
+/** Creates a new donator */
 router.post('/user', async (req,res) => {
     const user = new userModel({
         name: req.body.name,
@@ -34,6 +38,7 @@ router.post('/user', async (req,res) => {
     }
 });
 
+/** Creates a new association */
 router.post('/association', async (req,res) => {
     const association = new userModel({
         name: req.body.name,
@@ -53,6 +58,7 @@ router.post('/association', async (req,res) => {
 
 });
 
+/** Retrieves all the associations */
 router.get('/associations', async (req, res) => {
     try {
         const data = await userModel.find({isAssociation: true});
@@ -62,6 +68,7 @@ router.get('/associations', async (req, res) => {
     }
 });
 
+/** Retrieves a specific association identified by its id */
 router.get('/associations/:id', async (req, res) => {
     try {
         const data = await userModel.findOne({_id: req.params.id});
@@ -71,6 +78,7 @@ router.get('/associations/:id', async (req, res) => {
     }
 });
 
+/** Updates an association */
 router.put('/associations/:id/', async (req, res) => {
     const assosId = req.params.id;
     const mongooseId = ObjectId(assosId)

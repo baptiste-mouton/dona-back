@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+/** Campaign model, as stored in the mongoDB database */
 const campaignSchema = new mongoose.Schema({
     name: {
         required: true,
@@ -21,6 +22,7 @@ const campaignSchema = new mongoose.Schema({
     },
 });
 
+/** User model, as stored in the mongoDB database */
 const userSchema = new mongoose.Schema({
     name: {
         required: true,
